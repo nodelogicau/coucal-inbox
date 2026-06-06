@@ -1,0 +1,29 @@
+[versions]
+coucal-starter = "0.1.0-feature-coucal-starter-SNAPSHOT"
+h2 = "2.3.232"
+rome = "2.1.0"
+spock = "2.4-M4-groovy-4.0"
+spring-boot = "3.4.1"
+
+[libraries]
+coucal-starter-api = { module = "org.coucal:coucal-starter-api", version.ref = "coucal-starter"}
+coucal-starter-jpa = { module = "org.coucal:coucal-starter-jpa", version.ref = "coucal-starter"}
+coucal-starter-web = { module = "org.coucal:coucal-starter-web", version.ref = "coucal-starter"}
+coucal-starter-main = { module = "org.coucal:coucal-starter-main", version.ref = "coucal-starter"}
+
+slugify = { group = "com.github.slugify", name = "slugify", version = "3.0.7"}
+prettytime = {group = 'org.ocpsoft.prettytime', name='prettytime', version='5.0.9.Final'}
+
+#jakarta-mail = {group = 'jakarta.mail', name = 'jakarta.mail-api', version = '2.1.3'}
+angus-mail = {group = 'org.eclipse.angus', name = 'angus-mail', version='2.0.3'}
+
+jsoup = {group = 'org.jsoup', name = 'jsoup', version = '1.18.3'}
+html-sanitizer = {group = 'com.googlecode.owasp-java-html-sanitizer', name = 'owasp-java-html-sanitizer', version = '20240325.1'}
+
+h2 = {group = 'com.h2database', name = 'h2', version.ref = 'h2'}
+
+spock-bom = { module = "org.spockframework:spock-bom", version.ref = "spock"}
+spock-core = { module = "org.spockframework:spock-core", version.ref = "spock"}
+spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock"}
+
+spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot"}

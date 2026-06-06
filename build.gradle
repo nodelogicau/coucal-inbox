@@ -1,0 +1,66 @@
+import com.github.jk1.license.render.InventoryHtmlReportRenderer
+
+import java.time.Year
+
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'application'
+    id 'org.cadixdev.licenser' version '0.6.1'
+    id 'com.github.jk1.dependency-license-report' version '2.9'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+dependencies {
+    implementation libs.coucal.starter.api, libs.coucal.starter.jpa, libs.coucal.starter.web,
+            libs.coucal.starter.main,
+            libs.slugify, libs.prettytime, libs.angus.mail
+
+    testImplementation platform(libs.spock.bom), libs.spock.core,
+            libs.spock.spring, libs.spring.boot.test, libs.h2
+}
+
+license {
+    // Ignore failures and only print a warning on license violations
+    ignoreFailures = true
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = 'au.nodelogic.coucal.inbox.CoucalInboxMain'
+}
+
+startScripts {
+    applicationName = 'coucal-inbox'
+    classpath = files('lib/*')
+    defaultJvmOpts = [
+            '-Djava.awt.headless=false',
+            '-Dapple.awt.UIElement=true',
+    ]
+}
+
+license {
+    header = project.file('HEADER.txt')
+//    skipExistingHeaders = true
+//    include '**/*.java,**/*.html'
+    properties {
+        year = Year.now().value
+    }
+}
+
+licenseReport {
+    unionParentPomLicenses = false
+    renderers = [new InventoryHtmlReportRenderer()]
+}
